@@ -40,4 +40,4 @@ Akinita é um site que está sendo projetado para gerenciar transações e mostr
 3. Banco de Dados:
    - PostgreSQL
 4. Servidor:
-   - Xampp
+   - Express
