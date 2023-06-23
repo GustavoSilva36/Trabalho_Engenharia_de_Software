@@ -4,20 +4,20 @@ Akinita é um site que está sendo projetado para gerenciar transações e mostr
 
 ### Funcionalidades:
 1. Gerenciar Imovel:
-   - cadastrar (corretor),
-   - visualizar (corretor, comprador, usuário)
-   - editar (corretor),
+   - cadastrar (corretor)
+   - visualizar (corretor/usuario, comprador)
+   - editar (corretor)
    - apagar (corretor)
 2. Gerenciar Transações:
-   - cadastrar (corretor),
+   - cadastrar (corretor)
    - visualizar (corretor, comprador(futuro))
    - editar (corretor)
    - apagar (corretor)<br>
 3. Gerenciar Comprador:
-   - cadastrar (corretor, usuário (???))
-   - visualizar (corretor, comprador (???))
-   - editar (corretor, comprador (???))
-   - deletar (corretor, comprador (???)) (exclusão lógica?)<br>
+   - cadastrar (corretor/usuário)
+   - visualizar (corretor, comprador )
+   - editar (corretor, comprador )
+   - deletar (corretor, comprador) (exclusão lógica?)<br>
 
 ### Usuários previstos:
 - Corretor
