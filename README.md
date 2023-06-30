@@ -36,8 +36,8 @@ Akinita é um site que está sendo projetado para gerenciar transações e mostr
    - BOOTSTRAP
    - JavaScript
 2. BackEnd:
-   - NodeJs
+   - NodeJs 18.16.1
 3. Banco de Dados:
-   - PostgreSQL
+   - PostgreSQL 15.3-2
 4. Servidor:
    - Express
