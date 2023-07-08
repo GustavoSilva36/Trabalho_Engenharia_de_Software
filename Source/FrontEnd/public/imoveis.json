@@ -1,0 +1,32 @@
+[
+    {
+        "cep": "12345-067",
+        "rua": "Rua Bryan Naneti, 5050, Centro",
+        "preco": "R$40000,00",
+        "modeloNegocio": "Aluguel"
+    },
+    {
+        "cep": "11111-067",
+        "rua": "Rua Brinas, 300, Centro",
+        "preco": "R$80000,00",
+        "modeloNegocio": "Venda"
+    },
+    {
+        "cep": "12345-067",
+        "rua": "Rua Bryan Naneti, 5050, Centro",
+        "preco": "R$40000,00",
+        "modeloNegocio": "Aluguel"
+    },
+    {
+        "cep": "12345-067",
+        "rua": "Rua Bryan Naneti, 5050, Centro",
+        "preco": "R$30000,00",
+        "modeloNegocio": "Venda"
+    },
+    {
+        "cep": "352469",
+        "rua": "Rua Heitor Sabino, 3131, Centro",
+        "preco": "R$5000000,00",
+        "modeloNegocio": "Venda"
+    }
+]
