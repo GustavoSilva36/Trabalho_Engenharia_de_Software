@@ -36,6 +36,8 @@
 </template>
 
 <script>
+const axios = require('axios').default;
+
 export default {
     emits:{
         imovelCadastrado(pageObj){
@@ -54,7 +56,7 @@ export default {
         }
     },
     methods: {
-        submitLogin() {
+        async submitLogin(){
             if(!this.email || !this.senha){
                 alert('Por favor preencha os campos');
                 return;
@@ -65,10 +67,15 @@ export default {
             }
 
             // codigo para enviar email e senha para validacao
-            let login = {email: this.email, senha: this.senha};
+            let login = {email: this.email, password: this.senha};
             console.log(login);
-            localStorage.setItem('login', JSON.stringify(login));
-            localStorage.setItem('token', '123456789');
+            let token = await axios.post('http://localhost:3000/auth/user', login)
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     }
 }
