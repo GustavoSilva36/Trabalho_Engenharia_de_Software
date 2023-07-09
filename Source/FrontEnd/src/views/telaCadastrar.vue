@@ -13,19 +13,16 @@
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
                     <input type="password" class="form-control" placeholder="Senha" v-model="senha" />
                 </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
+                    <input type="password" class="form-control" placeholder="Confirmar Senha" v-model="confirmSenha" />
+                </div>
                 <div class="mb-3">
                     <button
                         class="btn btn-primary button-color"
                         style="background-color: #74972F; color: white; border: 0 solid white; "
-                        @click.prevent="submitLogin()"
-                        :disabled="isLoginInvalid"
-                    >
-                        Entrar
-                    </button>
-                    <button
-                        class="btn btn-primary"
-                        style="background-color: white; color: #74972F; border: 1 solid #74972F; border-color: #74972F;"
-                        @click.prevent="submitLogin()"
+                        @click.prevent="cadastrar()"
+                        :disabled="isCadastrarInvalid"
                     >
                         Cadastrar-se
                     </button>
@@ -39,24 +36,20 @@
 const axios = require('axios').default;
 
 export default {
-    emits:{
-        imovelCadastrado(pageObj){
-            return false;
-        }
-    },
     computed: {
-        isLoginInvalid(){
-            return (!this.email || !this.senha)
+        isCadastrarInvalid(){
+            return (!this.email || !this.senha || !this.confirmSenha)
         }
     },
     data() {
         return {
             email: '',
-            senha: ''
+            senha: '',
+            confirmSenha: ''
         }
     },
     methods: {
-        async submitLogin(){
+        async cadastrar(){
             if(!this.email || !this.senha){
                 alert('Por favor preencha os campos');
                 return;
@@ -67,15 +60,16 @@ export default {
             }
 
             // codigo para enviar email e senha para validacao
-            let login = {email: this.email, password: this.senha};
-            console.log(login);
-            let token = await axios.post('http://localhost:3000/auth/user', login)
+            let cadastrar = {email: this.email, password: this.senha, confirmPassword: this.confirmSenha};
+            console.log(cadastrar);
+            let data = await axios.post('http://localhost:3000/auth/register', cadastrar)
                 .then(function (response) {
                     console.log(response);
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
+            console.log(data);
         }
     }
 }

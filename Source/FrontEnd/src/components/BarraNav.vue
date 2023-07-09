@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg fixed-top bg-primary-color sticky-top" id="navbar">
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary-color sticky-top" id="navbar" style="height: 5em;">
         <div class="container py-3">
             <a href="#" class="navbar-brand">
                 <img src="../assets/Logo.png" alt="teste">
@@ -26,14 +26,66 @@
                     </li>
                 </ul>
             </div>
-            <a class="btn button-color" href="#" role="button">Entrar</a>
+
+            <a class="btn button-color" href="#/login" role="button" v-if="!logado">Entrar</a>
+
+            <div class="dropdown" v-if="logado">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{email}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#/visualizarImoveis">Imóveis</a></li>
+                    <li><a class="dropdown-item" href="#/">Transações</a></li>
+                    <li><a class="dropdown-item" href="#/">Perfil</a></li>
+                    <li><a class="dropdown-item" @click.prevent="sair()">Sair</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 </template>
 
 <script>
 export default{
-    props: ['pages', 'activePage']
+    created() {
+        this.verificarLogin();
+    },
+    data() {
+        return {
+            activePage: 0,
+            pages: [
+                {
+                    link: {text: 'Home', url: 'index.html'},
+                    pageTitle: 'Home Page',
+                    content: 'This is the Home content',
+                },
+                {
+                    link: {text: 'Ajuda', url: 'ajuda.html'},
+                    pageTitle: 'Help Page',
+                    content: 'This is the Help content',
+                },
+                {
+                    link: {text: 'Sobre', url: 'sobre.html'},
+                    pageTitle: 'About Page',
+                    content: 'This is the About content',
+                },
+            ],
+            logado: false,
+            email: 123, // username ?
+        }
+    },
+    methods: {
+        async verificarLogin() {
+            let logado = await localStorage.getItem('token') != undefined;
+            this.logado = logado;
+            let credentials = logado ? JSON.parse(localStorage.getItem('login')) : {};
+            this.email = credentials.email;
+        },
+        async sair() {
+            // chamar método de deslogar
+            localStorage.removeItem('token');
+            this.logado = false;
+        }
+    }
 }
 </script>
 

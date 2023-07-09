@@ -37,4 +37,6 @@ Autenticacao.init(
   }
 );
 
+Autenticacao.sync();
+
 module.exports = Autenticacao;

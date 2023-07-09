@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import BarraNav from './BarraNav.vue'
+import BarraNav from '../components/BarraNav.vue'
 
 export default {
     components: {

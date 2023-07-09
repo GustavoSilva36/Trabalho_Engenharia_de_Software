@@ -2,7 +2,6 @@ const express = require('express');
 const { json } = require('body-parser');
 const authRoutes = require('./Routes/autenticacaoRoutes');
 const cors = require('cors');
-const corsConfig = require('./expressConfig')
 
 const app = express();
 

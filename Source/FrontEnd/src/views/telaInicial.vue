@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import BarraNav from './BarraNav.vue'
+import BarraNav from '../components/BarraNav.vue'
 
 export default {
     components: {
@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
 .background-image { 
-    background: url("../../assets/casaFundoPrincipal.jpg") no-repeat center center; 
+    background: url("../assets/casaFundoPrincipal.jpg") no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

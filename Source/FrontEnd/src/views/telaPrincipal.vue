@@ -1,9 +1,9 @@
-<template>
+<!-- <template>
     <barra-nav></barra-nav>
-    <!-- <tela-inicial></tela-inicial> -->
-    <!-- <visualizar-imoveis
+    <tela-inicial></tela-inicial>
+    <visualizar-imoveis
         :imoveis="imoveis"
-    ></visualizar-imoveis> -->
+    ></visualizar-imoveis>
     <cadastrar-imoveis
         :imovel-cadastrado="imovelCadastrado"
     ></cadastrar-imoveis>
@@ -43,4 +43,4 @@ export default{
         }
     }
 }
-</script>
+</script> -->

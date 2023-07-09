@@ -1,4 +1,6 @@
 <template>
+    <BarraNav/>
+
     <center>
         <table>
             <tr>
@@ -19,24 +21,41 @@
             </tr>
         </table>
     </center>
+    <div class="dropup position-absolute bottom-0 end-0 rounded-circle m-5">
+    <button type="button" class="btn btn-success" style="border-radius: 50px;">
+        <i class="bi bi-plus fa-lg"></i>
+    </button>
+</div>
 </template>
 
 <script>
+import BarraNav from '../components/BarraNav.vue'
+
 export default {
-    props: {
-        imoveis: {
-            type: Object,
-            default() {
-                return [
-                    {
-                        cep: '',
-                        rua: '',
-                        preco: '',
-                        modeloNegocio: ''
-                    }
-                ]
-            }
+    components: {
+        BarraNav
+    },
+    created() {
+        this.getImoveis();
+    },
+    data() {
+        return {
+            imoveis: [
+                {
+                    cep: '',
+                    rua: '',
+                    preco: '',
+                    modeloNegocio: ''
+                }
+            ]
         }
+    },
+    methods: {
+        async getImoveis() {
+            let res = await fetch('imoveis.json');
+            let data = await res.json();
+            this.imoveis = data;
+        },
     }
 }
 </script>
@@ -54,5 +73,10 @@ td, tr, th{
 th{
     background-color: #5E7A26;
     color: white;
+}
+button{
+    position: absolute;
+    bottom: auto;
+
 }
 </style>
