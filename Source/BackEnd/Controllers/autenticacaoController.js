@@ -19,7 +19,7 @@ async function authenticateUser(req, res) {
     const token = await authServices.authenticateUser(user);
     res.status(200).json({ msg: 'Autenticado com sucesso', token: token });
   } catch (error) {
-    res.status(500).json({ msg: 'Houve um erro no servidor' });
+    res.send(500).json({ msg: 'Houve um erro no servidor' });
     console.log(error);
   }
 }

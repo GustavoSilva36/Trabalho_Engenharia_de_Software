@@ -6,7 +6,6 @@ const { json } = require('body-parser');
 const authRoutes = require('./Routes/autenticacaoRoutes');
 const cors = require('cors');
 
-
 const app = express();
 
 app.use(json());
@@ -42,7 +41,6 @@ app.use((req, res, next) => {
 app.use('/', imovelRouter);
 
 app.use('/', authRoutes);
-
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });

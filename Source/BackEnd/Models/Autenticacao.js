@@ -4,7 +4,7 @@ const dbUser = process.env.DB_USER
 const dbPassword = process.env.DB_PASS
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize('postgres', 'postgres', 'Mundo*45',{
+const sequelize = new Sequelize(dbName, dbUser, dbPassword,{
   host: 'localhost',
   dialect: 'postgres'
 });

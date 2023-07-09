@@ -1,7 +1,10 @@
 const { Sequelize } = require ('sequelize')
-
+require('dotenv').config();
+const dbName = process.env.DB_NAME
+const dbUser = process.env.DB_USER
+const dbPassword = process.env.DB_PASS
 function conectarBanco() {
-  const sequelize = new Sequelize('postgres', 'postgres', 'Mundo*45', {
+  const sequelize = new Sequelize(dbName, dbUser, dbPassword, {
     host: 'localhost',
     dialect: 'postgres',
   });
