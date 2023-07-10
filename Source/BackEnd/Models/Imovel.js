@@ -73,14 +73,4 @@ Imovel.init(
   module.exports = Imovel;
 
   
-//   const Image = sequelize.define('Image', {
-//     name: {
-//       type: DataTypes.STRING,
-//     },
-//     data: {
-//       type: DataTypes.BLOB,
-//     },
-//     contentType: {
-//       type: DataTypes.STRING,
-//     },
-//   });
+ 

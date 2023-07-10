@@ -1,30 +1,6 @@
 const imoveisRepositores = require ("../Repositories/imoveisRepositories.js")
 
 
-
-// Configuração do multer para lidar com o upload da imagem
-
-async function cadastrarImagem(req) {
-  return new Promise(async (resolve, reject) => {
-    if (!req.file) {
-      reject(new Error("Nenhum arquivo foi enviado."));
-      return;
-    }
-
-    const imagem = {
-      name: req.file.originalname,
-      data: req.file.buffer,
-      contentType: req.file.mimetype,
-    };
-
-    try {
-      const imagemCadastrada = await imoveisRepositores.cadastrarImagemNoBanco(imagem);
-      resolve(imagemCadastrada);
-    } catch (err) {
-      reject(err);
-    }
-  });
-}
 async function getAllImoveis() {
 	return ( await imoveisRepositores.getAllImoveis() )
 }
@@ -40,7 +16,7 @@ async function deletarImovel(codimovel) {
 //     return ( await imoveisRepositores.getImovelEndereco(logradouro, numero, bairro, cidade, estado))
 // }
 
-async function cadastrarImovel( imovel,imagem) {
+async function cadastrarImovel( imovel) {
 
 	const consultaImovel = await imoveisRepositores.getImovelEndereco(
         imovel.logradouro,
@@ -68,6 +44,6 @@ async function updateImovel(codimovel, imovel) {
 
 
 module.exports = {getAllImoveis, getImovel, cadastrarImovel, 
-    deletarImovel, updateImovel,cadastrarImagem}
+    deletarImovel, updateImovel}
 
 
