@@ -1,21 +1,7 @@
 const Imovel = require('../Models/Imovel.js');
 
 
-async function cadastrarImagemNoBanco(imagem,codimovel) {
-    try {
-      const novaImagem = await Image.create({
-        name: imagem.name,
-        data: imagem.data,
-        contentType: imagem.contentType,
-        codimovel: codimovel
-      });
-  
-      return novaImagem;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
+
 
 async function getAllImoveis() {
   try {
@@ -108,6 +94,5 @@ module.exports = {
   getImovelEndereco,
   getImovel,
   updateImovel,
-  deletarImovel,
-  cadastrarImagemNoBanco
+  deletarImovel
 };

@@ -1,5 +1,7 @@
 const multer = require('multer')
 const imovelRouter = require('./Routes/imoveisRoutes.js')
+const imagemRouter = require('./Routes/imagemRoutes.js')
+const path = require('path');
 
 const express = require('express');
 const { json } = require('body-parser');
@@ -7,6 +9,7 @@ const authRoutes = require('./Routes/autenticacaoRoutes');
 const cors = require('cors');
 
 const app = express();
+
 
 app.use(json());
 
@@ -26,7 +29,7 @@ app.all('', function(req, res, next) {
 });
 // Configuração do multer para o upload de arquivos
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage }).array("imagem");
+const upload = multer({ storage: storage }).single("imagem");
 
 app.use((req, res, next) => {
   upload(req, res, (err) => {
@@ -39,6 +42,7 @@ app.use((req, res, next) => {
   });
 });
 app.use('/', imovelRouter);
+app.use('/upload',upload, imagemRouter);
 
 app.use('/', authRoutes);
 app.listen(3000, () => {
