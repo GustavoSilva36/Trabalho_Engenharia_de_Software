@@ -27,14 +27,31 @@ Akinita é um site que está sendo projetado para gerenciar transações e mostr
 ### Estrutura de diretório:
 - Documents
 - Source
-- Tests   
+- Tests
+
+### Commits:
+#### Regras de commit
+- feat: Uma nova feature
+- fix: Correções de bugs
+- docs: Alteração na documentção
+- refactor: Refatorações que não são feature, nem melhoria
+
+### Práticas a seguir na codificação:
+- Nomes: Ao dar nomes a funções ou variáveis usar nomes intuitivos e de acordo com propósito da variavel ou função
+- Funções: As funções devem ser pequenas com até 15 linhas e devem fazer apenas uma coisa
+- Responsabilidade: As funções devem ser únicas ou seja, não devem ter duas funções que realizam as mesmas coisas
+- Comentários: Se for comentar o código seja direto e breve com no máximo 30 caracteres, comente só se for realmente necessário
+- Erros: Faça os tratamentos de exceções para que o seu código tenha o mínimo de erros possíveis
+- Testes: Ao adcionar uma nova função ao sistema faça testes e verifique se ela está funcionando como deveria
+
 
 ## TECNOLOGIAS UTILIZADAS
 1. FrontEnd:
-   - HTML5
-   - CSS3
-   - BOOTSTRAP
+   - HTML 5
+   - CSS 3
+   - BOOTSTRAP 3.0
    - JavaScript
+   - Vue 3
 2. BackEnd:
    - NodeJs 18.16.1
 3. Banco de Dados:
