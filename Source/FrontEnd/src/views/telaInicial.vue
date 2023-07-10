@@ -5,16 +5,21 @@
 
     </div>
     <div class="row row-cols-3 g-3" style="margin: 20px;">
-        <div class="col" v-for="i in vet" style="padding: 30px; text-align: center;">
+        <div class="col" v-for="imovel in imoveis" style="padding: 30px; text-align: center;">
             <div class="card">
                 <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"
-                    alt="Hollywood Sign on The Hill" />
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                    This is a longer card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.
-                    </p>
+                    alt="Hollywood Sign on The Hill" style="padding: 20px;"/>
+                <div class="card-body" style="padding: 20px;">
+                    <div style="text-align: left;">
+                        <p class="card-text">
+                            Endereço:<br>
+                            {{imovel.logradouro}}, {{imovel.numero}}, {{imovel.bairro}}<br>
+                        </p>
+                        <p class="card-text">
+                            Preço:<br>
+                            R${{Number(imovel.preco).toFixed(2)}}<br>
+                        </p>
+                    </div>
                     <button class="btn btn-primary">
                         detalhes
                     </button>
@@ -27,14 +32,31 @@
 <script>
 import BarraNav from '../components/BarraNav.vue'
 
+const axios = require('axios').default;
+
 export default {
     components: {
         BarraNav
     },
+    created() {
+        this.getImoveis();
+    },
     data() {
         return {
-            vet: [1,2,3,4,5,6,7,8,9]
+            imoveis: []
         }
+    },
+    methods: {
+        async getImoveis() {
+
+            try{
+                let response = await axios.get('http://localhost:3000/imovel');
+                this.imoveis = response.data;
+            }
+            catch(e){
+                console.log(e);
+            }
+        },
     }
 }
 </script>
@@ -48,5 +70,15 @@ export default {
     background-size: cover;
     width: 100%;
     height: 600px;
+}
+button{
+    background-color: #74972F;
+    color: white;
+    border-color: #74972F;
+}
+button:hover, button:focus, button:active{
+    background-color: #5E7A26;
+    color: white;
+    border-color: #5E7A26;
 }
 </style>

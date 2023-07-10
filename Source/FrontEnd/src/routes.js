@@ -5,6 +5,7 @@ import telaLogin from './views/telaLogin.vue';
 import telaCadastro from './views/telaCadastrar.vue'
 import cadastrarImovel from './views/cadastrarImovel.vue';
 import visualizarImoveis from './views/visualizarImoveis.vue';
+import editarImovel from './views/editarImovel.vue';
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -13,7 +14,8 @@ const router = createRouter({
         {path: '/login', component: telaLogin},
         {path: '/cadastrar', component: telaCadastro},
         {path: '/cadastrarImovel', component: cadastrarImovel},
-        {path: '/visualizarImoveis', component: visualizarImoveis}
+        {path: '/visualizarImoveis', component: visualizarImoveis},
+        {path: '/editarImovel/:index', component: editarImovel},
     ]
 });
 

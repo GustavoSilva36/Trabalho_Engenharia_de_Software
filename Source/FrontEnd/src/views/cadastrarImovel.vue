@@ -1,7 +1,7 @@
 <template>
     <BarraNav/>
-
-    <div class="container mb-3">
+    <div class="container mb-3" style="text-align: center;">
+        <h1>CADASTRAR IMÓVEL</h1>
         <form action="">
             <div class="row row-cols-2 g-2" style="margin: 20px; border: 1px solid black;">
                 <div class="col" style="border-right: 1px solid black; padding: 0px 20px; text-align: center;">
@@ -63,6 +63,7 @@
                             type="text"
                             class="form-control"
                             placeholder="ESTADO"
+                            maxlength="2"
                             v-model="estado"
                         />
                     </div>
@@ -75,20 +76,18 @@
                         />
                     </div>
                     <div class="mb-3 formulario"> <!-- boolean -->
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="MODELO DE NEGÓCIO"
-                            v-model="modeloNegocio"
-                        />
+                        <select id="inputState" class="form-control" v-model="modeloNegocio">
+                            <option disabled value="">MODELO DE NEGÓCIO</option>
+                            <option>Aluguel</option>
+                            <option>Venda</option>
+                        </select>
                     </div>
                     <div class="mb-3 formulario"> <!-- boolean -->
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="TIPO DE IMÓVEL"
-                            v-model="tipoImovel"
-                        />
+                        <select id="inputState2" class="form-control" v-model="tipoImovel">
+                            <option disabled value="">TIPO DE IMÓVEL</option>
+                            <option>Casa</option>
+                            <option>Apartamento</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <button
@@ -118,7 +117,7 @@ export default {
     },
     computed: {
         isFormInvalid(){
-            return (!this.cep || !this.logradouro || !this.numero || !this.complemento || !this.cidade || !this.estado || !this.preco || !this.modeloNegocio || !this.tipoImovel);
+            return (!this.cep || !this.logradouro || !this.numero || !this.cidade || !this.estado || !this.preco || !this.modeloNegocio || !this.tipoImovel);
         }
     },
     data() {
@@ -137,7 +136,8 @@ export default {
     },
     methods: {
         async submitForm() {
-            if(!this.cep || !this.logradouro || !this.numero || !this.complemento || !this.bairro || !this.cidade || !this.estado || !this.preco || !this.modeloNegocio || !this.tipoImovel) {
+            console.log(this.modeloNegocio === 'Aluguel' ? true : false)
+            if(!this.cep || !this.logradouro || !this.numero || !this.bairro || !this.cidade || !this.estado || !this.preco || !this.modeloNegocio || !this.tipoImovel) {
                 alert('Please fill the form');
                 return;
             }
@@ -149,10 +149,10 @@ export default {
                 complemento: this.complemento,
                 bairro: this.bairro,
                 cidade: this.cidade,
-                estado: this.estado,
+                estado: this.estado.toUpperCase(),
                 preco: this.preco,
-                modelonegocio: true,
-                tipodeimovel: true
+                modelonegocio: this.modeloNegocio === 'Aluguel' ? true : false,
+                tipodeimovel: this.tipoImovel === 'Casa' ? true : false,
             };
 
             console.log(imovel);
@@ -176,10 +176,20 @@ export default {
 </script>
 
 <style scoped>
-input{
+input, select{
     border-radius: 50px;
 }
 .formulario{
     margin-top: 45px;
+}
+button{
+    background-color: #74972F;
+    color: white;
+    border-color: #74972F;
+}
+button:hover, button:focus, button:active{
+    background-color: #5E7A26;
+    color: white;
+    border-color: #5E7A26;
 }
 </style>
