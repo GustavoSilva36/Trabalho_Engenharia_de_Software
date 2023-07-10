@@ -3,7 +3,7 @@
     <div id="cont">
         <div class="container mb-3 w-50 mx-auto">
             <img src="../assets/Logo.png" alt="teste">
-            <h1 style="color: #878787; margin-bottom: 30px;">LOGIN</h1>
+            <h1 style="color: #878787; margin-bottom: 30px;">CADASTRO</h1>
             <form action="">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope-at"></i></span>
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import router from '@/routes';
+
 const axios = require('axios').default;
 
 export default {
@@ -65,6 +67,7 @@ export default {
             let data = await axios.post('http://localhost:3000/auth/register', cadastrar)
                 .then(function (response) {
                     console.log(response);
+                    router.push('/login');
                 })
                 .catch(function (error) {
                     console.log(error);
