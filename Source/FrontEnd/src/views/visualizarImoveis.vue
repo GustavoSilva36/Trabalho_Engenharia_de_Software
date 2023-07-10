@@ -1,7 +1,7 @@
 <template>
     <BarraNav/>
 
-    <center>
+    <div class="container">
         <table>
             <tr>
                 <th>CEP</th>
@@ -20,16 +20,21 @@
                 <td><i class="bi bi-trash"></i></td>
             </tr>
         </table>
-    </center>
+    </div>
     <div class="dropup position-absolute bottom-0 end-0 rounded-circle m-5">
-    <button type="button" class="btn btn-success" style="border-radius: 50px;">
+    <button type="button" class="btn btn-success" style="border-radius: 50px;" @click.prevent="router.push('/cadastrarImovel')">
         <i class="bi bi-plus fa-lg"></i>
     </button>
 </div>
 </template>
 
 <script>
-import BarraNav from '../components/BarraNav.vue'
+import router from '@/routes';
+
+import BarraNav from '../components/BarraNav.vue';
+
+const axios = require('axios').default;
+
 
 export default {
     components: {
@@ -40,6 +45,7 @@ export default {
     },
     data() {
         return {
+            router: router,
             imoveis: [
                 {
                     cep: '',
@@ -52,9 +58,27 @@ export default {
     },
     methods: {
         async getImoveis() {
-            let res = await fetch('imoveis.json');
-            let data = await res.json();
-            this.imoveis = data;
+            let token = localStorage.getItem('token');
+            let teste = [];
+
+            await axios.get('http://localhost:3000/imovel')
+                .then(function (response) {
+                    let imoveis = response.data;
+                    for(let imovel in imoveis){
+                        teste.push({
+                            cep: imoveis[imovel].cep,
+                            rua: imoveis[imovel].logradouro + ', ' + imoveis[imovel].numero + ', ' + imoveis[imovel].bairro,
+                            preco: imoveis[imovel].preco,
+                            modeloNegocio: imoveis[imovel].modelonegocio,
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            if(teste.length)
+                this.imoveis = teste;
         },
     }
 }

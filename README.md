@@ -31,10 +31,11 @@ Akinita é um site que está sendo projetado para gerenciar transações e mostr
 
 ## TECNOLOGIAS UTILIZADAS
 1. FrontEnd:
-   - HTML5
-   - CSS3
-   - BOOTSTRAP
+   - HTML 5
+   - CSS 3
+   - BOOTSTRAP 3.0
    - JavaScript
+   - Vue 3
 2. BackEnd:
    - NodeJs 18.16.1
 3. Banco de Dados:

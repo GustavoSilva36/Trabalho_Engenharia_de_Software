@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import router from '@/routes';
+
 const axios = require('axios').default;
 
 export default {
@@ -67,7 +69,9 @@ export default {
             await axios.post('http://localhost:3000/auth/user', login)
                 .then(function (response) {
                     console.log(response);
+                    localStorage.setItem('login', JSON.stringify(login));
                     localStorage.setItem('token', response.data.token);
+                    router.push('/');
                 })
                 .catch(function (error) {
                     console.log(error);
