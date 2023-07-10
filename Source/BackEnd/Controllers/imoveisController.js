@@ -43,8 +43,6 @@ async function cadastrarImovel(req, res) {
 		return res.status(400).json({ error: "Campo 'tipodeimovel' é obrigatório" });
 	}else{
 		try {
-
-			
 	  
 			// Cadastrar o imóvel
 			const novoImovel = await imoveisServices.cadastrarImovel(imovel);
