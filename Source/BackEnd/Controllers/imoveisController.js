@@ -20,8 +20,9 @@ async function getImovel(req, res) {
 
 async function cadastrarImovel(req, res) {
 	//capturar os dados
-	const imovel = req.body
-	console.log(req.body)
+	const imovel = req.body.imovel;
+	// console.log(req.body)
+	console.log(imovel);
 	//validação
 	if(imovel.cep==undefined || imovel.cep==null || imovel.cep==""){
 		return res.status(400).json({ error: "Cep não pode ser vazio" });

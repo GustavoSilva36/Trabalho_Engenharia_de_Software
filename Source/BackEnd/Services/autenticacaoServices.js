@@ -51,6 +51,7 @@ async function authenticateUser(user) {
 
   const secret = process.env.SECRET;
   const token = jwt.sign({ email: user.email }, secret);
+  console.log(token);
   return token;
 }
 

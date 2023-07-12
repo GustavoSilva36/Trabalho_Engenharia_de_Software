@@ -156,8 +156,15 @@ export default {
             };
 
             console.log(imovel);
-
-            await axios.post('http://localhost:3000/imovel', imovel)
+            let token = localStorage.getItem('token');
+            console.log(token);
+            await axios.post('http://localhost:3000/imovel', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    token: token
+                },
+                imovel: imovel,
+                })
                 .then(function (response) {
                     console.log(response);
                     router.push('/visualizarImoveis');
@@ -165,11 +172,6 @@ export default {
                 .catch(function (error) {
                     console.log(error);
                 });
-
-            this.cep = '';
-            this.preco = '';
-            this.modeloNegocio = '';
-            this.photo = {};
         }
     }
 }

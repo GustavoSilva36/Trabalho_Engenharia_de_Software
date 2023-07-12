@@ -4,7 +4,7 @@ const { checkToken } = require('../checkToken.js')
 
 const router = express.Router()
 
-router.post('/imovel', imoveisController.cadastrarImovel )
+router.post('/imovel', checkToken, imoveisController.cadastrarImovel )
 router.get('/imovel', imoveisController.getAllImoveis )
 router.get('/imovel/:codimovel', imoveisController.getImovel )
 router.delete('/imovel/:codimovel', imoveisController.deletarImovel)
