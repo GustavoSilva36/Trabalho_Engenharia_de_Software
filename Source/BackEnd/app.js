@@ -1,11 +1,13 @@
 const multer = require('multer')
 const imovelRouter = require('./Routes/imoveisRoutes.js')
 const imagemRouter = require('./Routes/imagemRoutes.js')
+const compradorRouter = require('./Routes/compradorRoutes.js')
+const transacaoRouter = require('./Routes/transacaoRoutes.js')
 const path = require('path');
 
 const express = require('express');
 const { json } = require('body-parser');
-const authRoutes = require('./Routes/autenticacaoRoutes');
+const authRouter = require('./Routes/autenticacaoRoutes');
 const cors = require('cors');
 
 const app = express();
@@ -46,8 +48,10 @@ app.use((req, res, next) => {
 });
 app.use('/', imovelRouter);
 app.use('/upload',upload, imagemRouter);
+app.use('/', transacaoRouter)
 
-app.use('/', authRoutes);
+app.use('/',compradorRouter)
+app.use('/', authRouter);
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });

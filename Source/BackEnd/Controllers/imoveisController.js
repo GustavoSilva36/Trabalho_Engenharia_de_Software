@@ -71,7 +71,6 @@ async function updateImovel(req, res) {
 	const imovel = req.body
 		
 	res.send( await imoveisServices.updateImovel(codimovel,imovel))
-
 }
 
 module.exports = {getAllImoveis, getImovel, cadastrarImovel, 
