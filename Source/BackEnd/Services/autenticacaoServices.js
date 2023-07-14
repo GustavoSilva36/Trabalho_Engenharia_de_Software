@@ -2,33 +2,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const AutenticacaoRepositories = require('../Repositories/autenticacaoRepositories');
 
-async function registerUser(cadastro) {
-  if (!cadastro.email) {
-    throw new Error('O email é obrigatório!');
-  }
-
-  if (!cadastro.password) {
-    throw new Error('A senha é obrigatória');
-  }
-
-  if (cadastro.password !== cadastro.confirmPassword) {
-    throw new Error('As senhas são diferentes');
-  }
-
-  const userExists = await AutenticacaoRepositories.getUserByEmail(cadastro.email);
-  if (userExists) {
-    throw new Error('E-mail já cadastrado');
-  }
-
-  const salt = await bcrypt.genSalt(12);
-  const passwordHash = await bcrypt.hash(cadastro.password, salt);
-
-  await AutenticacaoRepositories.createUser({
-    email: cadastro.email,
-    password: passwordHash,
-    tipoConta: true,
-  });
-}
 
 async function authenticateUser(user) {
   if (!user.email) {
@@ -52,7 +25,7 @@ async function authenticateUser(user) {
   const secret = process.env.SECRET;
   const token = jwt.sign({ email: user.email }, secret);
   console.log(token);
-  return token;
+  return {token: token, tipoUsuario: existingUser.tipoUsuario};
 }
 
 async function getUserByEmail(email) {
@@ -61,7 +34,6 @@ async function getUserByEmail(email) {
 }
 
 module.exports = {
-  registerUser,
   authenticateUser,
   getUserByEmail,
 };

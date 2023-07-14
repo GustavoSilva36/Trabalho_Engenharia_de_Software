@@ -6,12 +6,6 @@ async function getUserByEmail(email) {
   });
   return user;
 }
-
-async function createUser(userData) {
-  await Autenticacao.create(userData);
-}
-
 module.exports = {
   getUserByEmail,
-  createUser,
 };

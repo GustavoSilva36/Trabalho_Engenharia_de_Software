@@ -1,23 +1,11 @@
 const authServices = require('../Services/autenticacaoServices');
 
-async function registerUser(req, res) {
-  const cadastro = req.body;
-
-  try {
-    await authServices.registerUser(cadastro);
-    res.status(200).json({ msg: 'Usuário criado com sucesso' });
-  } catch (error) {
-    res.status(500).json({ msg: 'Houve um erro no servidor' });
-    console.log(error);
-  }
-}
-
 async function authenticateUser(req, res) {
   const user = req.body;
 
   try {
-    const token = await authServices.authenticateUser(user);
-    res.status(200).json({ msg: 'Autenticado com sucesso', token: token });
+    const usuario = await authServices.authenticateUser(user);
+    res.status(200).json({ msg: 'Autenticado com sucesso', token: usuario.token, tipoUsuario: usuario.tipoUsuario});
   } catch (error) {
     res.send(500).json({ msg: 'Houve um erro no servidor' });
     console.log(error);
@@ -40,7 +28,6 @@ async function getUserByEmail(req, res) {
 }
 
 module.exports = {
-  registerUser,
   authenticateUser,
   getUserByEmail,
 };
