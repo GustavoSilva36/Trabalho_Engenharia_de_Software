@@ -29,7 +29,7 @@ async function updateTransacao(codTransacao,transacao){
 	if (consultaTransacao.length==0){
 		return "Erro!!! Transação não existe."
 	}
-	return  await transacaoRepositories.updateTransacao(codTransacao, transacao) 
+	return  await transacaoRepositories.updateTransacao(transacao, codTransacao) 
 }
 
 

@@ -8,7 +8,7 @@ const router = express.Router()
 router.post('/comprador', compradorController.cadastrarComprador )
 router.get('/comprador', checkToken,compradorController.getAllCompradores )
 router.delete('/comprador/:email',compradorController.deletarComprador)
-router.get('/comprador/:cpf', checkToken,compradorController.getComprador )
+router.get('/comprador/:email', compradorController.getComprador ) 
 router.put('/comprador/:cpf', checkToken,compradorController.updateComprador)
 
 module.exports =  router;

@@ -36,9 +36,9 @@ async function getAllCompradores(){
     } 
 }
 
-async function getComprador(cpf){
+async function getComprador(email){
     try{
-        const comprador = await Comprador.findByPk(cpf)
+        const comprador = await Comprador.findOne({where: {email: email}})
         return comprador;
     }
     catch (err) {

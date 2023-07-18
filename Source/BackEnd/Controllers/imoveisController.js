@@ -68,7 +68,8 @@ async function deletarImovel(req, res) {
 
 async function updateImovel(req, res) {
 	const codimovel = req.params.codimovel
-	const imovel = req.body
+	const imovel = req.body.imovel
+	console.log(imovel);
 		
 	res.send( await imoveisServices.updateImovel(codimovel,imovel))
 }

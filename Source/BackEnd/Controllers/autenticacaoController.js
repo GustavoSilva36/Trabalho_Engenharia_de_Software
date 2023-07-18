@@ -7,7 +7,7 @@ async function authenticateUser(req, res) {
     const usuario = await authServices.authenticateUser(user);
     res.status(200).json({ msg: 'Autenticado com sucesso', token: usuario.token, tipoUsuario: usuario.tipoUsuario});
   } catch (error) {
-    res.send(500).json({ msg: 'Houve um erro no servidor' });
+    res.send(500).json({ msg: 'Houve um erro no servidor' }); 
     console.log(error);
   }
 }

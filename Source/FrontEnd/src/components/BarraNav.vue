@@ -35,8 +35,8 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a class="dropdown-item" href="#/imoveis">Imóveis</a></li>
-                    <li><a class="dropdown-item" href="#/">Transações</a></li>
-                    <li><a class="dropdown-item" href="#/">Perfil</a></li>
+                    <li><a class="dropdown-item" href="#/transacoes">Transações</a></li>
+                    <li><a class="dropdown-item" href="#/perfil">Perfil</a></li>
                     <li><a class="dropdown-item" @click.prevent="sair()">Sair</a></li>
                 </ul>
             </div>
@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import router from '@/routes';
+
 export default{
     created() {
         this.verificarLogin();
@@ -84,6 +86,7 @@ export default{
             // chamar método de deslogar
             localStorage.removeItem('token');
             this.logado = false;
+            router.push('/')
         }
     }
 }

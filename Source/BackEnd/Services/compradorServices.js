@@ -20,8 +20,8 @@ async function getAllCompradores() {
 	return ( await compradorRepositories.getAllCompradores() )
 }
 
-async function getComprador(cpf){
-    return (await compradorRepositories.getComprador(cpf))
+async function getComprador(email){
+    return (await compradorRepositories.getComprador(email))
 }
 
 async function deletarComprador(email){
@@ -30,7 +30,7 @@ async function deletarComprador(email){
 
 
 async function updateComprador(cpf, comprador) {
-	var consultarComprador = await getComprador(cpf);
+	var consultarComprador = await getComprador(comprador.email);
 	
 	if (consultarComprador.length==0){
 		return "Erro!!! Comprador não existe."

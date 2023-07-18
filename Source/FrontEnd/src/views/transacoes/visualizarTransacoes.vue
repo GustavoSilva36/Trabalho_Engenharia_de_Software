@@ -1,26 +1,22 @@
 <template>
     <div class="center">
-        <h1>IMÓVEIS</h1>
+        <h1>TRANSAÇÕES</h1>
         <table>
             <tr>
-                <th>CEP</th>
-                <th>ENDEREÇO</th>
-                <th>ESTADO</th>
-                <th>PREÇO</th>
-                <th>MODELO DE<br>NEGÓCIO</th>
-                <th>TIPO DE<br>IMÓVEL</th>
+                <th>CÓDIGO</th>
+                <th>CPF DO<br>COMPRADOR</th>
+                <th>CÓDIGO DO<br>IMÓVEL</th>
+                <th>DATA/HORA</th>
                 <th>EDITAR</th>
                 <th>EXCLUIR</th>
             </tr>
-            <tr v-for="(imovel, i) in imoveis">
-                <td>{{imovel.cep}}</td>
-                <td>{{imovel.logradouro + ', ' + imovel.numero + ', ' + imovel.bairro}}</td>
-                <td>{{imovel.estado}}</td>
-                <td>R$ {{Number(imovel.preco).toFixed(2)}}</td>
-                <td>{{imovel.modelonegocio ? 'Aluguel' : 'Venda'}}</td>
-                <td>{{imovel.tipodeimovel ? 'Casa' : 'Apartamento'}}</td>
+            <tr v-for="(transacao, i) in transacoes">
+                <td>{{transacao.codTransacao}}</td>
+                <td>{{transacao.cpfComprador}}</td>
+                <td>{{transacao.codImovel}}</td>
+                <td>{{transacao.dataHora}}</td>
                 <td>
-                    <a :href="'#/imoveis/editar/' + imovel.codimovel" style="color: black;">
+                    <a :href="'#/transacoes/editar/' + transacao.codTransacao" style="color: black;">
                         <i class="bi bi-pencil"></i>
                     </a>
                 </td>
@@ -41,15 +37,15 @@
     </div>
     
     <div class="dropup position-absolute bottom-0 end-0 rounded-circle m-5">
-        <button type="button" class="btn btn-success botao" style="border-radius: 50px;" @click.prevent="router.push('/imoveis/cadastrar')">
+        <button type="button" class="btn btn-success botao" style="border-radius: 50px;" @click.prevent="router.push('/transacoes/cadastrar')">
             <i class="bi bi-plus fa-lg"></i>
         </button>
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <confirmarDelete
-            :titulo="'Deletar Imóvel'"
-            :conteudo="'Deseja realmente deletar o imóvel de cep ' + (imoveis[index] == null ? '0' : imoveis[index].cep) + '?'"
+            :titulo="'Deletar Transação'"
+            :conteudo="'Deseja realmente deletar a transação ' + (transacoes[index] == null ? '0' : transacoes[index].codTransacao) + '?'"
             :deletar="deletar"
         />
     </div>
@@ -67,35 +63,27 @@ export default {
         confirmarDelete,
     },
     created() {
-        this.getImoveis();
+        this.getTransacoes();
     },
     data() {
         return {
             router: router,
-            imoveis: [
+            transacoes: [
                 {
-                    cep: '',
-                    logradouro: '',
-                    numero: '',
-                    complemento: '',
-                    bairro: '',
-                    cidade: '',
-                    estado: '',
-                    preco: '',
-                    modeloNegocio: '',
-                    tipoImovel: '',
+                    codTransacao: '',
+                    cpfComprador: '',
+                    codImovel: '',
+                    dataHora: '',
                 }
             ],
             index: '0',
         }
     },
     methods: {
-        async getImoveis() {
-            let token = localStorage.getItem('token');
-
+        async getTransacoes() {
             try{
-                let response = await axios.get('http://localhost:3000/imovel');
-                this.imoveis = response.data;
+                let response = await axios.get('http://localhost:3000/transacao');
+                this.transacoes = response.data;
             }
             catch(e){
                 console.log(e);
@@ -107,15 +95,9 @@ export default {
             
             try{
                 await axios.delete(
-                    'http://localhost:3000/imovel/' + this.imoveis[this.index].codimovel, {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                            token: token
-                        },
-                    }
-                );
+                    'http://localhost:3000/transacao/' + this.transacoes[this.index].codTransacao);
                 this.index = 0;
-                this.getImoveis();
+                this.getTransacoes();
             }
             catch(e){
                 console.log(e);

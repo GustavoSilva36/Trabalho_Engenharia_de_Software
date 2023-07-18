@@ -35,13 +35,13 @@ async function cadastrarComprador(req, res) {
   }
 async function getComprador(req, res) {
     //recebendo dados
-	const cpf = req.params.cpf
+	const email = req.params.email
 	
 	//validação
-	if(cpf==undefined || cpf==null || cpf==""){
-	   res.send("Cpf não pode ser vazio")
+	if(email==undefined || email==null || email==""){
+	   res.send("Email não pode ser vazio");
 	}else{
-		res.send ( await compradorServices.getComprador(cpf) )
+		res.send(await compradorServices.getComprador(email));
 	}
 }
 
@@ -62,9 +62,9 @@ async function deletarComprador(req,res){
 
 async function updateComprador(req, res) {
 	const cpf = req.params.cpf
-	const comprador = req.body
+	const comprador = req.body.comprador
 		
-	res.send(await compradorServices.updateImovel(cpf,comprador))
+	res.send(await compradorServices.updateComprador(cpf,comprador))
 
 }
 

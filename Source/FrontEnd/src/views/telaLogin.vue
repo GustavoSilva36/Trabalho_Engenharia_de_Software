@@ -27,7 +27,6 @@
                         href="#/cadastrar"
                         style="background-color: white; color: #74972F; border: 1 solid #74972F; border-color: #74972F;"
                         role="button"
-                        v-if="!logado"
                     >Cadastrar-se</a>
                 </div>
             </form>
@@ -66,16 +65,17 @@ export default {
             // codigo para enviar email e senha para validacao
             let login = {email: this.email, password: this.senha};
             console.log(login);
-            await axios.post('http://localhost:3000/auth/user', login)
-                .then(function (response) {
-                    console.log(response);
-                    localStorage.setItem('login', JSON.stringify(login));
-                    localStorage.setItem('token', response.data.token);
-                    router.push('/');
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            try{
+                let response = await axios.post('http://localhost:3000/auth/user', login);
+                console.log(response);
+                localStorage.setItem('login', JSON.stringify(login));
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('tipoUsuario', response.data.tipoUsuario);
+                router.push('/');
+            }
+            catch(e){
+                console.log(e);
+            }
         }
     }
 }

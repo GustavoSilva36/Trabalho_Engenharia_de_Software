@@ -74,7 +74,7 @@ export default {
 
             try{
                 await axios.put(
-                    'http://localhost:3000/imovel'+this.$route.params.index, {
+                    'http://localhost:3000/imovel/'+this.$route.params.index, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                             token: token

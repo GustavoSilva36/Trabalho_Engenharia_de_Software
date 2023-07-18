@@ -19,7 +19,7 @@ async function getTransacao(req, res) {
 
 async function cadastrarTransacao(req, res) {
 	//capturar os dados
-	const transacao = req.body;
+	const transacao = req.body.transacao;
 	//validação
 	if(transacao.codImovel==undefined || transacao.codImovel==null || transacao.codImovel==""){
 		return res.status(400).json({ error: "codImovel não pode ser vazio" });
@@ -49,7 +49,7 @@ async function deletarTransacao(req, res) {
 
 async function updateTransacao(req, res) {
 	const codTransacao = req.params.codTransacao
-	const transacao = req.body
+	const transacao = req.body.transacao
 		
 	res.send( await transacaoServices.updateTransacao(codTransacao,transacao))
 }
