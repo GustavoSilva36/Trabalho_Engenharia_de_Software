@@ -12,11 +12,8 @@ async function getImovel(codimovel) {
 async function deletarImovel(codimovel) {
 	return ( await imoveisRepositores.deletarImovel(codimovel) )
 }
-// async function getImovelEndereco(logradouro, numero, bairro, cidade, estado) {
-//     return ( await imoveisRepositores.getImovelEndereco(logradouro, numero, bairro, cidade, estado))
-// }
 
-async function cadastrarImovel( imovel) {
+async function cadastrarImovel(imovel) {
 
 	const consultaImovel = await imoveisRepositores.getImovelEndereco(
         imovel.logradouro,
