@@ -34,7 +34,7 @@
                     {{email}}
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#/visualizarImoveis">Imóveis</a></li>
+                    <li><a class="dropdown-item" href="#/imoveis">Imóveis</a></li>
                     <li><a class="dropdown-item" href="#/">Transações</a></li>
                     <li><a class="dropdown-item" href="#/">Perfil</a></li>
                     <li><a class="dropdown-item" @click.prevent="sair()">Sair</a></li>

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import BarraNav from '../components/BarraNav.vue'
+import BarraNav from '../components/BarraNav.vue';
 
 const axios = require('axios').default;
 
