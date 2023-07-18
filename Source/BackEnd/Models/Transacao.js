@@ -37,12 +37,14 @@ Transacao.init({
 
 Transacao.belongsTo(Comprador,{
     constraints:true,
-    foreignKey:'cpfComprador'
+    foreignKey:'cpfComprador',
+    onDelete:'restrict'
 })
 
 Transacao.belongsTo(Imovel,{
     constraints:true,
-    foreignKey:'codImovel'
+    foreignKey:'codImovel',
+    onDelete:'restrict'
 })
 
 Transacao.sync();
