@@ -28,7 +28,7 @@ async function cadastrarImovel(imovel) {
       modelonegocio: imovel.modelonegocio,
       tipodeimovel: imovel.tipodeimovel,
     });
-    return novoImovel;
+    return "Imovel Cadastrado com sucesso";
   } catch (err) {
     console.log(err);
     throw err;
