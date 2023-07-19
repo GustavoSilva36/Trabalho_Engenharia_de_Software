@@ -16,7 +16,7 @@ async function getAllImoveis() {
 
 async function cadastrarImovel(imovel) {
   try {
-    const novoImovel = await Imovel.create({
+      await Imovel.create({
       cep: imovel.cep,
       logradouro: imovel.logradouro,
       numero: imovel.numero,
