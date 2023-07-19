@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
 # Inicialização do WebDriver
-driver = webdriver.Chrome()  # Certifique-se de que o ChromeDriver está no PATH ou especifique o caminho.
+driver = webdriver.Edge()  # Certifique-se de que o ChromeDriver está no PATH ou especifique o caminho.
 
 try:
     # Passo 1
@@ -15,8 +15,8 @@ try:
     senha_input = driver.find_element('xpath','//*[@id="cont"]/div/form/div[2]/input')
     login_button = driver.find_element('xpath','//*[@id="cont"]/div/form/div[3]/button')
 
-    email_input.send_keys("bryan@hotmail.com")
-    senha_input.send_keys("123456")
+    email_input.send_keys("teste1@email.com")
+    senha_input.send_keys("123123")
     login_button.click()
 
     time.sleep(2)  # Aguarda 2 segundos para o redirecionamento ocorrer
@@ -90,8 +90,8 @@ try:
     codImovel_input = driver.find_element('xpath','//*[@id="app"]/div/form/div/div[2]/input')
     
     time.sleep(1)
-    cpfComprador_input.send_keys("1123456789")
-    codImovel_input.send_keys("1")
+    cpfComprador_input.send_keys("123123")
+    codImovel_input.send_keys("19")
     
     cadastrar_button = driver.find_element('xpath','//*[@id="app"]/div/form/div/div[3]/button')
     cadastrar_button.click()
